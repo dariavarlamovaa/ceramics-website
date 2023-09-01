@@ -4,10 +4,16 @@
     justify-content: space-between;
 }
 
+.catalog-items a {
+    width: 30%;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+}
+
 .item {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
     margin-bottom: 40px;

@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Item(models.Model):
-    title = models.TextField(max_length=50)
+    title = models.CharField(max_length=50)
     price = models.CharField(max_length=5)
     type = models.CharField(max_length=100, default='another')
     image = models.ImageField(upload_to='shop/images')

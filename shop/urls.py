@@ -5,6 +5,9 @@ from . import views
 
 urlpatterns = [
     path('shop/', views.shop, name='shop'),
+    path('item/<int:item_pk>', views.viewitem, name='viewitem'),
+    path('item/<int:item_pk>/delete', views.deleteitem, name='delete'),
+    path('add_item/', views.additem, name='additem'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
