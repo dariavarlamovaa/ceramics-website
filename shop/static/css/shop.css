@@ -1,0 +1,22 @@
+.catalog-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.item img {
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}

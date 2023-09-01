@@ -1,0 +1,90 @@
+.login, .signup {
+    display: flex;
+    justify-content: center;
+}
+
+.login {
+    margin-bottom: 95px;
+
+}
+
+.login-block, .sign-up-block {
+    border: solid 3px #211f1f;
+    min-width: 500px;
+    max-width: 800px;
+    min-height: 700px;
+    text-align: center;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-block input[type="text"],
+.login-block input[type="password"] {
+    width: 100%;
+    border: 2px solid #211f1f;
+    box-sizing: border-box;
+    height: 49px;
+    font-size: 20px;
+    text-align: center;
+
+}
+
+.sign-up-form label,
+.sign-in-form label {
+    font-size: 25px;
+}
+
+.sign-in-form input:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.btn {
+    width: 100%;
+    border: 2px solid #211f1f;
+    background-color: #FFFFFF;
+    line-height: 2;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: #211f1f;
+    color: #FFFFFF;
+}
+
+.sign-up-link {
+    text-decoration: underline;
+}
+
+.sign-up-block {
+    justify-content: flex-start;
+}
+
+.sign-up-block h1 {
+    padding-bottom: 30px;
+}
+
+.sign-up-form ul {
+    list-style: none;
+}
+
+.sign-up-form p {
+    padding-top: 30px;
+}
+
+.sign-up-form input[type='text'],
+.sign-up-form input[type='password'] {
+    width: 100%;
+    border: 2px solid #211f1f;
+    box-sizing: border-box;
+    height: 49px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.sign-up-btn {
+    margin-top: 50px;
+}

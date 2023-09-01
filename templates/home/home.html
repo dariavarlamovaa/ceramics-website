@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block content %}
+<section class="home-main-page">
+    <div class="home container">
+        <img class="image-ceramics" src="{% static 'home/ceramics_main.jpg' %}" alt="Ceramics">
+    </div>
+</section>
+{% endblock content %}
