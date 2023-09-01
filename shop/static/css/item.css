@@ -1,0 +1,58 @@
+.item-title {
+    text-align: center;
+}
+
+.item hr {
+    width: 900px;
+}
+
+.item-editing {
+    border: solid 3px #211f1f;
+    min-width: 700px;
+    max-width: 900px;
+    min-height: 700px;
+    text-align: center;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.item-edit-form {
+    min-width: 600px;
+}
+
+.item-edit-form input[type="text"],
+.item-edit-form input[type="password"],
+.item-edit-form input[type="file"],
+.item-edit-form input[type="url"] {
+    width: 100%;
+    border: 2px solid #211f1f;
+    box-sizing: border-box;
+    height: 49px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.delete, .save {
+    width: 100%;
+    border: solid 3px #211f1f;
+    background-color: #FFFFFF;
+    height: 49px;
+}
+
+.delete:hover, .save:hover {
+    background-color: #211f1f;
+    color: #FFFFFF;
+}

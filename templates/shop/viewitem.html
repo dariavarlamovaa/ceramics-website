@@ -1,0 +1,29 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/item.css' %}">
+{% endblock %}
+{% block content %}
+<section class="item-info">
+    <div class="item container">
+        <h1 class="item-title">Item: {{ item.title }}</h1>
+        <hr>
+        <div class="item-editing">
+            <form method="post" class="item-edit-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="button">
+                    <button class="save btn">Save</button>
+                </div>
+            </form>
+
+            <form action="{% url 'delete' item.id %}" method="post" class="item-edit-form">
+                {% csrf_token %}
+                <div class="button">
+                    <button class="delete btn">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}

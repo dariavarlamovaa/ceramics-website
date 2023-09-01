@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/add_item.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="adding-new-item">
+    <div class="item container">
+        <h1 class="item-heading">Adding item</h1>
+        <hr>
+        <div class="item-adding">
+            <form method="post" enctype="multipart/form-data" class="add-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="button">
+                    <button class="add-btn">Add</button>
+                </div>
+            </form>
+        </div>
+</section>
+{% endblock %}
