@@ -1,4 +1,5 @@
-.item-title {
+.item-title,
+.item-heading {
     text-align: center;
 }
 
@@ -6,7 +7,8 @@
     width: 900px;
 }
 
-.item-editing {
+.item-editing,
+.item-adding {
     border: solid 3px #211f1f;
     min-width: 700px;
     max-width: 900px;
@@ -21,14 +23,19 @@
     margin: 0 auto;
 }
 
-.item-edit-form {
+.item-edit-form,
+.item-add-form {
     min-width: 600px;
 }
 
 .item-edit-form input[type="text"],
 .item-edit-form input[type="password"],
 .item-edit-form input[type="file"],
-.item-edit-form input[type="url"] {
+.item-edit-form input[type="url"],
+.item-add-form input[type="text"],
+.item-add-form input[type="password"],
+.item-add-form input[type="file"],
+.item-add-form input[type="url"] {
     width: 100%;
     border: 2px solid #211f1f;
     box-sizing: border-box;
@@ -45,14 +52,15 @@
     margin-top: 15px;
 }
 
-.delete, .save {
+.delete, .save, .add-btn {
     width: 100%;
     border: solid 3px #211f1f;
     background-color: #FFFFFF;
     height: 49px;
+    font-size: 15px;
 }
 
-.delete:hover, .save:hover {
+.delete:hover, .save:hover, .add-btn:hover {
     background-color: #211f1f;
     color: #FFFFFF;
 }

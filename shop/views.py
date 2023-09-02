@@ -11,8 +11,9 @@ def shop(request):
 
 
 def additem(request):
+    menu = Menu.objects.all()
     if request.method == 'GET':
-        return render(request, 'shop/add_item.html', {'form': ItemForm()})
+        return render(request, 'shop/add_item.html', {'form': ItemForm(), 'menu': menu})
     else:
         try:
             form = ItemForm(request.POST, request.FILES)
@@ -22,22 +23,23 @@ def additem(request):
             return redirect('shop')
         except ValueError:
             return render(request, 'shop/add_item.html',
-                          {'form': ItemForm(),
+                          {'form': ItemForm(), 'menu': menu,
                            'error': 'Invalid input'})
 
 
 def viewitem(request, item_pk):
+    menu = Menu.objects.all()
     item = get_object_or_404(Item, pk=item_pk)
     form = ItemForm(instance=item)
     if request.method == 'GET':
-        return render(request, 'shop/viewitem.html', {'item': item, 'form': form})
+        return render(request, 'shop/item.html', {'item': item, 'form': form, 'menu': menu})
     else:
         try:
             form = ItemForm(request.POST, instance=item)
             form.save()
             return redirect('shop')
         except ValueError:
-            return render(request, 'shop/viewitem.html', {'form': form, 'error': 'Invalid data'})
+            return render(request, 'shop/item.html', {'form': form, 'menu': menu, 'error': 'Invalid data'})
 
 
 def deleteitem(request, item_pk):

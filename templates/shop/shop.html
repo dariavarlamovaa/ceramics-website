@@ -9,15 +9,29 @@
         <h1 class="catalog-title">Catalog</h1>
         <hr>
         <div class="catalog-items">
+            {% if user.is_staff %}
             {% for item in items %}
             <a href="{% url 'viewitem' item.id %}">
                 <div class="item">
                     <img src="{{ item.image.url }}" alt="{{ project.title }}">
-                    <span class="{{ item.title }}">{{ item.title }}</span>
-                    <span class="{{ item.price }}">{{ item.price }}</span>
+                    <span>{{ item.title }}</span>
+                    <span>{{ item.price }}</span>
+                    <button class="add-to-cart-button">ADD TO CART</button>
                 </div>
-                {% endfor %}
             </a>
+            {% endfor %}
+            {% else %}
+            {% for item in items %}
+            <a href="#">
+                <div class="item">
+                    <img src="{{ item.image.url }}" alt="{{ project.title }}">
+                    <span>{{ item.title }}</span>
+                    <span>{{ item.price }}</span>
+                    <button class="add-to-cart-button">ADD TO CART</button>
+                </div>
+            </a>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
 </section>

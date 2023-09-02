@@ -18,14 +18,17 @@
             {% for m in menu %}
             <a class="menu-nav-item" href="{{ m.url }}">{{ m.title }}</a>
             {% endfor %}
+            {% if user.is_staff %}
+            <a class="menu-nav-item" href="{% url 'additem' %}">ADD NEW ITEM</a>
+            {% endif %}
         </nav>
         <div class="right-items">
             {% if user.is_authenticated %}
             <a href="#">{{ user.username }}</a>
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="logout-btn">Logout</button>
-                </form>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-btn">Logout</button>
+            </form>
             {% else %}
             <a href="{% url 'login' %}">LOGIN</a>
             {% endif %}
