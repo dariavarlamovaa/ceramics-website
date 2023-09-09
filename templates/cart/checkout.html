@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <section class="checkout-page">
+        <div class="checkout container">
+            <h1 class="checkout-title">Checkout</h1>
+            <hr>
+            <div class="cart-items">
+                {% for item in cart_items %}
+                <div class="item-info">
+                    <span class="item-title">{{ item.title }}</span>
+                    <span class="item-price">{{ item.price }}</span>
+                </div>
+                {% endfor %}
+                <hr>
+                <div class="total-price-checkout">
+                    <span>TOTAL:</span>
+                    <span>{{ total_price }}$</span>
+                </div>
+
+            </div>
+            <div class="checkout-inputs">
+                <h3 class="billing-address-title">Billing address</h3>
+                <form method="post" class="bg">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="proceed-button">
+                        <button type="submit" class="proceed btn">PROCEED</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
