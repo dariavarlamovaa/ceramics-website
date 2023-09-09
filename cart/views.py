@@ -39,7 +39,6 @@ def item_clear(request, pk):
         return redirect('cart')
 
 
-
 @login_required
 def update_cart(request):
     if request.method == "POST":
