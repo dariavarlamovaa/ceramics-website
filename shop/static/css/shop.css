@@ -1,3 +1,14 @@
+.query-set {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 30px 20px 0;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.sort-by-link {
+    margin-right: 30px;
+}
+
 .catalog-items {
     display: flex;
     flex-wrap: wrap;

@@ -9,12 +9,17 @@
         <div class="shop container">
             <h1 class="catalog-title">Catalog</h1>
             <hr>
+            <div class="query-set">
+                    <a class="sort-by-link" href="?sort_by=price">Price</a>
+                    <a class="sort-by-link" href="?sort_by=type">Type</a>
+                    <a class="sort-by-link" href="?sort_by=title">Title</a>
+            </div>
             <div class="catalog-items">
                 {% if user.is_staff %}
                 {% for item in items %}
                 <div class="item">
-                    <a href="{% url 'viewitem' item.id %}">
-                        <img src="{{ item.image.url }}" alt="{{ project.title }}">
+                    <a href="{% url 'sort_items' item.id %}">
+                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
                         <span>{{ item.title }}</span>
                         <span>{{ item.price }}</span>
                         {% if user.is_active %}
