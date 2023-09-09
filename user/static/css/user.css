@@ -88,3 +88,8 @@
 .sign-up-btn {
     margin-top: 50px;
 }
+
+.error {
+    color: #D52B2BC8;
+    margin-top: 20px;
+}

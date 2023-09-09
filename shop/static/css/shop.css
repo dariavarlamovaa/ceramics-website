@@ -5,7 +5,6 @@
 }
 
 .catalog-items a {
-    width: 30%;
     margin-bottom: 40px;
     box-sizing: border-box;
 }
@@ -13,7 +12,7 @@
 .item {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 30%;
     text-align: left;
     box-sizing: border-box;
     margin-bottom: 40px;
@@ -27,7 +26,7 @@
     padding-bottom: 20px;
 }
 
-.add-to-cart-button {
+.add-to-cart-link {
     text-decoration: underline;
     background-color: transparent;
     border: none;

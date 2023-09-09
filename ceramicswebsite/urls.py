@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('', include('user.urls')),
     path('', include('shop.urls')),
+    path('', include('cart.urls'))
 ]
 

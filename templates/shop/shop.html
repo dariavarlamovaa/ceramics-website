@@ -11,25 +11,33 @@
         <div class="catalog-items">
             {% if user.is_staff %}
             {% for item in items %}
-            <a href="{% url 'viewitem' item.id %}">
-                <div class="item">
+            <div class="item">
+                <a href="{% url 'viewitem' item.id %}">
                     <img src="{{ item.image.url }}" alt="{{ project.title }}">
                     <span>{{ item.title }}</span>
                     <span>{{ item.price }}</span>
-                    <button class="add-to-cart-button">ADD TO CART</button>
-                </div>
-            </a>
+                    {% if user.is_active %}
+                    <a class="add-to-cart-link" href="{% url 'add-item-to-cart' item.id %}">ADD TO CART</a>
+                    {% else %}
+                    <a class="add-to-cart-link" href="{% url 'login' %}">ADD TO CART</a>
+                    {% endif %}
+                </a>
+            </div>
             {% endfor %}
             {% else %}
             {% for item in items %}
-            <a href="#">
-                <div class="item">
+            <div class="item">
+                <a href="#">
                     <img src="{{ item.image.url }}" alt="{{ project.title }}">
                     <span>{{ item.title }}</span>
                     <span>{{ item.price }}</span>
-                    <button class="add-to-cart-button">ADD TO CART</button>
-                </div>
-            </a>
+                    {% if user.is_active %}
+                    <a class="add-to-cart-link" href="{% url 'add-item-to-cart' item.id %}">ADD TO CART</a>
+                    {% else %}
+                    <a class="add-to-cart-link" href="{% url 'login' %}">ADD TO CART</a>
+                    {% endif %}
+                </a>
+            </div>
             {% endfor %}
             {% endif %}
         </div>
