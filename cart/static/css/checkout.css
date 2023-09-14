@@ -1,53 +1,30 @@
+.total-price-checkout {
+    text-align: right;
+}
+
 .item-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.total-price-checkout {
-    text-align: right;
-}
-
 .checkout-inputs h3 {
     padding: 20px 0;
 }
 
-input {
+input, textarea {
     border: 1px solid #211f1f;
     box-sizing: border-box;
     padding: 10px;
     font-size: 15px;
     margin-bottom: 10px;
-}
-
-.row {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.name-info,
-.card {
-    width: 48%;
-}
-
-.firstname, .lastname {
     width: 100%;
 }
 
-.card input, .email,
-.address {
-    width: 100%;
+textarea {
+    height: 40px;
 }
 
-.country-info, .city-info, .postcode-info{
-    width: 31%;
-}
-
-.country, .city, .postcode {
-    width: 100%;
-}
 
 .btn {
     margin-top: 20px;

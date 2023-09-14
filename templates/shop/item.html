@@ -1,12 +1,12 @@
 {% extends 'home/base.html' %}
 {% load static %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/item.css' %}">
+<link rel="stylesheet" href="{% static 'css/edit.css' %}">
 {% endblock %}
 {% block content %}
 <main>
-    <section class="item-info">
-        <div class="item container">
+    <section class="edit-item-info">
+        <div class="edit-item container">
             <h1 class="item-title">Item: {{ item.title }}</h1>
             <hr>
             <div class="item-editing">

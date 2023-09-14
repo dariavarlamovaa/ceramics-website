@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from shop.models import Item
 
 
 class Cart(models.Model):
@@ -8,6 +9,7 @@ class Cart(models.Model):
     image = models.ImageField(upload_to='cart/images')
     quantity = models.PositiveIntegerField(default=1)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    main_item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

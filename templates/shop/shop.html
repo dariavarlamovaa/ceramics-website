@@ -9,43 +9,137 @@
         <div class="shop container">
             <h1 class="catalog-title">Catalog</h1>
             <hr>
-            <div class="query-set">
+            <div class="query-set-sort">
+                <div class="query-set">
+                    <span>Sort By</span>
                     <a class="sort-by-link" href="?sort_by=price">Price</a>
-                    <a class="sort-by-link" href="?sort_by=type">Type</a>
                     <a class="sort-by-link" href="?sort_by=title">Title</a>
+                </div>
+                <div class="query-set">
+                    <span>Category</span>
+                    {% for type in types %}
+                    <a class="sort-by-link" href="?category={{ type }}">{{ type }}</a>
+                    {% endfor %}
+                </div>
             </div>
+            <hr>
             <div class="catalog-items">
+                {% for item in items %}
+                {% if user.is_active %}
                 {% if user.is_staff %}
-                {% for item in items %}
                 <div class="item">
-                    <a href="{% url 'sort_items' item.id %}">
-                        <img src="{{ item.image.url }}" alt="{{ item.title }}">
-                        <span>{{ item.title }}</span>
-                        <span>{{ item.price }}</span>
-                        {% if user.is_active %}
-                        <a class="add-to-cart-link" href="{% url 'add-item-to-cart' item.id %}">ADD TO CART</a>
-                        {% else %}
-                        <a class="add-to-cart-link" href="{% url 'login' %}">ADD TO CART</a>
-                        {% endif %}
-                    </a>
+                    <img class="item-img" src="{{ item.image.url }}" alt="{{ item.title }}">
+                    <div class="item-info">
+                        <a href="{% url 'edit-item' item.id %}">
+                            <span>{{ item.title }}</span>
+                            <span class="span-price">{{ item.price }}</span>
+                        </a>
+                    </div>
+                    <div class="item-links">
+                        <a class="add-to-cart-link item-links" href="{% url 'add-item-to-cart' item.id %}">ADD TO
+                            CART</a>
+                        <a class="add-to-comparison item-links" href="{% url 'add-to-compare' item.id %}">
+                            <svg width="25" height="25" viewBox="0 0 20 28" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <line x1="6.57629" y1="26.5044" x2="6.57629" y2="1.00008" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="12.9821" y1="26.5044" x2="12.9821" y2="8.10141" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="19" y1="26.5044" x2="19" y2="14.0557" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                                <line x1="1" y1="26.5044" x2="1" y2="17.5533" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a class="add-to-favourites item-links" href="{% url 'add-to-favourites' item.id %}">
+                            <svg fill="#000000" width="28px" height="25px" viewBox="0 0 32 32" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.064">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M8.999 3.567c0.98 0 2.753 0.469 5.628 3.301l1.425 1.403 1.404-1.426c1.996-2.028 4.12-3.288 5.543-3.288 1.919 0 3.432 0.656 4.907 2.128 1.39 1.386 2.156 3.23 2.156 5.191 0.001 1.962-0.764 3.807-2.169 5.209-0.114 0.116-6.156 6.634-11.218 12.097-0.238 0.227-0.511 0.26-0.656 0.26-0.143 0-0.412-0.032-0.65-0.253-1.233-1.372-10.174-11.313-11.213-12.351-1.391-1.388-2.157-3.233-2.157-5.194s0.766-3.804 2.158-5.192c1.353-1.352 2.937-1.885 4.842-1.885zM8.999 1.567c-2.392 0-4.5 0.715-6.255 2.469-3.659 3.649-3.659 9.566 0 13.217 1.045 1.045 11.183 12.323 11.183 12.323 0.578 0.578 1.336 0.865 2.093 0.865s1.512-0.287 2.091-0.865c0 0 11.090-11.97 11.208-12.089 3.657-3.652 3.657-9.57 0-13.219-1.816-1.813-3.845-2.712-6.319-2.712-2.364 0-5 1.885-6.969 3.885-2.031-2-4.585-3.874-7.031-3.874v0z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                {% endfor %}
                 {% else %}
-                {% for item in items %}
                 <div class="item">
-                    <a href="#">
-                        <img src="{{ item.image.url }}" alt="{{ project.title }}">
-                        <span>{{ item.title }}</span>
-                        <span>{{ item.price }}</span>
-                        {% if user.is_active %}
-                        <a class="add-to-cart-link" href="{% url 'add-item-to-cart' item.id %}">ADD TO CART</a>
-                        {% else %}
-                        <a class="add-to-cart-link" href="{% url 'login' %}">ADD TO CART</a>
-                        {% endif %}
-                    </a>
+                    <img class="item-img" src="{{ item.image.url }}" alt="{{ project.title }}">
+                    <div class="item-info">
+                        <a href="{% url 'view-item' item.id%}">
+                            <span>{{ item.title }}</span>
+                            <span class="span-price">{{ item.price }}</span>
+                        </a>
+                    </div>
+                    <div class="item-links">
+                        <a class="add-to-cart-link item-links" href="{% url 'add-item-to-cart' item.id %}">ADD TO
+                            CART</a>
+                        <a class="add-to-comparison item-links" href="{% url 'add-to-compare' item.id %}">
+                            <svg width="25" height="25" viewBox="0 0 20 28" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <line x1="6.57629" y1="26.5044" x2="6.57629" y2="1.00008" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="12.9821" y1="26.5044" x2="12.9821" y2="8.10141" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="19" y1="26.5044" x2="19" y2="14.0557" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                                <line x1="1" y1="26.5044" x2="1" y2="17.5533" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a class="add-to-favourites item-links" href="{% url 'add-to-favourites' item.id %}">
+                            <svg fill="#000000" width="28px" height="25px" viewBox="0 0 32 32" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.064">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round"
+                                   stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M8.999 3.567c0.98 0 2.753 0.469 5.628 3.301l1.425 1.403 1.404-1.426c1.996-2.028 4.12-3.288 5.543-3.288 1.919 0 3.432 0.656 4.907 2.128 1.39 1.386 2.156 3.23 2.156 5.191 0.001 1.962-0.764 3.807-2.169 5.209-0.114 0.116-6.156 6.634-11.218 12.097-0.238 0.227-0.511 0.26-0.656 0.26-0.143 0-0.412-0.032-0.65-0.253-1.233-1.372-10.174-11.313-11.213-12.351-1.391-1.388-2.157-3.233-2.157-5.194s0.766-3.804 2.158-5.192c1.353-1.352 2.937-1.885 4.842-1.885zM8.999 1.567c-2.392 0-4.5 0.715-6.255 2.469-3.659 3.649-3.659 9.566 0 13.217 1.045 1.045 11.183 12.323 11.183 12.323 0.578 0.578 1.336 0.865 2.093 0.865s1.512-0.287 2.091-0.865c0 0 11.090-11.97 11.208-12.089 3.657-3.652 3.657-9.57 0-13.219-1.816-1.813-3.845-2.712-6.319-2.712-2.364 0-5 1.885-6.969 3.885-2.031-2-4.585-3.874-7.031-3.874v0z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                {% endfor %}
                 {% endif %}
+                {% else %}
+                <div class="item">
+                    <img class="item-img" src="{{ item.image.url }}" alt="{{ project.title }}">
+                    <div class="item-info">
+                        <a href="{% url 'view-item' item.id%}">
+                            <span>{{ item.title }}</span>
+                            <span>{{ item.price }}</span>
+                        </a>
+                    </div>
+                    <div class="item-links">
+                        <a class="add-to-cart-link item-links" href="{% url 'login' %}">ADD TO CART</a>
+                        <a class="add-to-comparison item-links" href="{% url 'login' %}" title="Compare">
+                            <svg width="25" height="25" viewBox="0 0 20 28" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <line x1="6.57629" y1="26.5044" x2="6.57629" y2="1.00008" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="12.9821" y1="26.5044" x2="12.9821" y2="8.10141" stroke="black"
+                                      stroke-width="2" stroke-linecap="round"/>
+                                <line x1="19" y1="26.5044" x2="19" y2="14.0557" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                                <line x1="1" y1="26.5044" x2="1" y2="17.5533" stroke="black" stroke-width="2"
+                                      stroke-linecap="round"/>
+                            </svg>
+                        </a>
+                        <a class="add-to-favourites item-links" href="{% url 'login' %}">
+                            <svg fill="#000000" width="28px" height="25px" viewBox="0 0 32 32" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.064">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <path d="M8.999 3.567c0.98 0 2.753 0.469 5.628 3.301l1.425 1.403 1.404-1.426c1.996-2.028 4.12-3.288 5.543-3.288 1.919 0 3.432 0.656 4.907 2.128 1.39 1.386 2.156 3.23 2.156 5.191 0.001 1.962-0.764 3.807-2.169 5.209-0.114 0.116-6.156 6.634-11.218 12.097-0.238 0.227-0.511 0.26-0.656 0.26-0.143 0-0.412-0.032-0.65-0.253-1.233-1.372-10.174-11.313-11.213-12.351-1.391-1.388-2.157-3.233-2.157-5.194s0.766-3.804 2.158-5.192c1.353-1.352 2.937-1.885 4.842-1.885zM8.999 1.567c-2.392 0-4.5 0.715-6.255 2.469-3.659 3.649-3.659 9.566 0 13.217 1.045 1.045 11.183 12.323 11.183 12.323 0.578 0.578 1.336 0.865 2.093 0.865s1.512-0.287 2.091-0.865c0 0 11.090-11.97 11.208-12.089 3.657-3.652 3.657-9.57 0-13.219-1.816-1.813-3.845-2.712-6.319-2.712-2.364 0-5 1.885-6.969 3.885-2.031-2-4.585-3.874-7.031-3.874v0z"></path>
+                                </g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </section>

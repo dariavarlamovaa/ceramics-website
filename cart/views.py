@@ -24,7 +24,8 @@ def add_to_cart(request, pk):
         title=item,
         price=item.price,
         image=item.image,
-        user=request.user
+        user=request.user,
+        main_item=item
     )
     if not created:
         added_item.quantity += 1

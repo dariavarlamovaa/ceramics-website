@@ -1,10 +1,12 @@
-.cart-title + hr {
+.cart-title + hr,
+.favourites-title + hr {
     margin-bottom: 50px;
 }
 
 .shop-table {
     width: 100%;
 }
+
 
 .product-thumbnail {
     width: 150px;
@@ -46,6 +48,11 @@
     background-color: #FFFFFF;
 }
 
+.product-remove a {
+    display: flex;
+    align-items: center;
+}
+
 .sum-total {
     padding: 20px 0;
     text-align: right;
@@ -80,4 +87,28 @@
 .continue-shopping {
     background-color: #FFFFFF;
     border: 1px solid #211f1f;
+}
+
+.clear-favourites {
+    text-align: right;
+    margin-bottom: 50px;
+}
+
+.clear-favourites a {
+    text-transform: uppercase;
+    color: #211F1F4C;
+}
+
+.no-items-found {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.no-items-found p {
+    margin-bottom: 20px;
+}
+
+.no-items-found a {
+    text-decoration: underline;
+    font-weight: bold;
 }

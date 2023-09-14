@@ -68,7 +68,7 @@ main {
 .right-items {
     display: flex;
     justify-content: space-between;
-    min-width: 200px;
+    min-width: 300px;
     align-items: center;
 }
 

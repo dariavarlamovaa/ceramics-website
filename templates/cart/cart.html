@@ -9,6 +9,7 @@
         <div class="cart container">
             <h1 class="cart-title">Cart</h1>
             <hr>
+            {% if cart_items %}
             <div class="items-table">
                 <table class="shop-table">
                     <thead class="titles-row">
@@ -66,6 +67,13 @@
                 <a class="checkout btn" href="{% url 'checkout' %}">PROCEED TO CHECKOUT</a>
                 <a class="continue-shopping btn" href="{% url 'shop' %}">CONTINUE SHOPPING</a>
             </div>
+            {% else %}
+            <div class="no-items-found">
+                <p>The cart is empty</p>
+                <a href="{% url 'shop' %}">GO SHOPPING</a>
+            </div>
+            <hr>
+            {% endif %}
         </div>
     </section>
 </main>

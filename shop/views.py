@@ -2,15 +2,29 @@ from django.shortcuts import render, get_object_or_404, redirect
 from home.views import Menu
 from shop.models import Item
 from .forms import ItemForm
+from django.contrib.auth.decorators import login_required
 
 
 def shop(request):
     menu = Menu.objects.all()
     items = Item.objects.all()
-    return render(request, 'shop/shop.html', {'menu': menu, 'items': items})
+    sort_by = request.GET.get('sort_by')
+    category = request.GET.get('category')
+    types = Item.objects.values_list('type', flat=True).distinct()
+    if sort_by:
+        items = Item.objects.order_by(sort_by).all()
+        context = {'items': items, 'menu': menu, 'types': types}
+        return render(request, 'shop/shop.html', context)
+    if category:
+        items = Item.objects.filter(type=category).all()
+        context = {'items': items, 'menu': menu, 'types': types}
+        return render(request, 'shop/shop.html', context)
+
+    return render(request, 'shop/shop.html', {'menu': menu, 'items': items, 'types': types})
 
 
-def additem(request):
+@login_required
+def add_item(request):
     menu = Menu.objects.all()
     if request.method == 'GET':
         return render(request, 'shop/add_item.html', {'form': ItemForm(), 'menu': menu})
@@ -27,7 +41,8 @@ def additem(request):
                            'error': 'Invalid input'})
 
 
-def viewitem(request, item_pk):
+@login_required
+def edit_item(request, item_pk):
     menu = Menu.objects.all()
     item = get_object_or_404(Item, pk=item_pk)
     form = ItemForm(instance=item)
@@ -42,25 +57,15 @@ def viewitem(request, item_pk):
             return render(request, 'shop/item.html', {'form': form, 'menu': menu, 'error': 'Invalid data'})
 
 
-def deleteitem(request, item_pk):
+@login_required
+def delete_item(request, item_pk):
     item = get_object_or_404(Item, pk=item_pk)
     if request.method == 'POST':
         item.delete()
         return redirect('shop')
 
 
-def sort_items(request):
+def view_one_item(request, item_pk):
     menu = Menu.objects.all()
-    sort_by = request.GET.get('sort_by')
-    print(f"Sorting by: {sort_by}")
-    items = Item.objects.all()
-    if sort_by == 'price':
-        items = Item.objects.order_by('price')
-    elif sort_by == 'type':
-        items = Item.objects.order_by('type')
-    elif sort_by == 'title':
-        items = Item.objects.order_by('title')
-
-    context = {'items': items, 'menu': menu}
-
-    return render(request, 'shop/shop.html', context)
+    one_item = Item.objects.get(pk=item_pk)
+    return render(request, 'shop/single_item.html', {'item': one_item, 'menu': menu})
