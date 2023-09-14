@@ -1,0 +1,40 @@
+.comparison {
+    width: 1500px;
+}
+
+.comparison-title + hr {
+    margin-bottom: 50px;
+}
+
+.comparison-table {
+    width: 100%;
+    text-align: center;
+}
+
+.product-thumbnail {
+    width: 150px;
+    box-sizing: border-box;
+}
+
+.product-thumbnail img {
+    width: 100px;
+    height: 100px;
+}
+
+.product-remove {
+    text-align: right;
+}
+
+.no-comparison-found {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.no-comparison-found p {
+    margin-bottom: 20px;
+}
+
+.no-comparison-found a {
+    text-decoration: underline;
+    font-weight: bold;
+}

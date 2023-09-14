@@ -1,0 +1,59 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/single_item.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    <section class="one-item-info">
+        <div class="item container">
+            <div class="item-image">
+                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            </div>
+            <div class="all-item-info">
+                <h2>{{ item.title }}</h2>
+                <hr>
+                <div class="price-info">
+                    <span>{{ item.price }}</span>
+                    {% if user.is_active %}
+                    <a href="{% url 'add-item-to-cart' item.id %}">Add to cart</a>
+                    {% else %}
+                    <a href="{% url 'login' %}">Add to cart</a>
+                    {% endif %}
+                </div>
+                <hr>
+                <div class="item-specifications">
+                    <table class="item-info-table">
+                        <tbody>
+                        <tr>
+                            <td>Type</td>
+                            <td>{{ item.type }}</td>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td>{{ item.length }}</td>
+                        </tr>
+                        <tr>
+                            <td>Height</td>
+                            <td>{{ item.height }}</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>{{ item.weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>Material</td>
+                            <td>{{ item.material }}</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>{{ item.color }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock content %}
