@@ -34,7 +34,7 @@
 .item-add-form input[type="text"],
 .item-add-form input[type="password"],
 .item-add-form input[type="file"],
-.item-edit-form input[type='date']{
+.item-edit-form input[type='datetime-local']{
     width: 100%;
     border: 2px solid #211f1f;
     box-sizing: border-box;

@@ -36,7 +36,10 @@
                         <a href="{% url 'edit-item' item.id %}">
                             <span>{{ item.title }}</span>
                             {% if item.discount_price and item.start_date <= now and now <= item.end_date %}
-                            <span class="span-price">{{ item.discount_price }}</span>
+                            <div class="old-and-discount-prices">
+                                <span class="span-old-price">{{ item.price }}</span>
+                                <span class="span-price discount-price">{{ item.discount_price }}</span>
+                            </div>
                             {% else %}
                             <span class="span-price">{{ item.price }}</span>
                             {% endif %}

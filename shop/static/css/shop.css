@@ -44,6 +44,14 @@
     padding-bottom: 20px;
 }
 
+.span-old-price {
+    font-size: 16px;
+    text-decoration: line-through;
+}
+
+.discount-price {
+    color: #e03838;
+}
 
 .add-to-cart-link {
     text-decoration: underline;
