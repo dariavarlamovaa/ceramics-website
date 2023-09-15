@@ -26,9 +26,10 @@
                     <tbody>
                     {% for favourite in all_favourites %}
                     <tr class="table-row-titles">
-                        <td class="product-thumbnail"><a href="{% url 'view-item' favourite.main_item.id %}"><img src="{{ favourite.image.url }}"
-                                                                       alt="{{ favourite.title }}"
-                                                                       class="item-image"></a></td>
+                        <td class="product-thumbnail"><a href="{% url 'view-item' favourite.main_item.id %}"><img
+                                src="{{ favourite.image.url }}"
+                                alt="{{ favourite.title }}"
+                                class="item-image"></a></td>
                         <td class="product-name"><a href="#">{{ favourite.title }}</a></td>
                         <td class="product-price"><a href="#">{{ favourite.price }}</a></td>
                         <td class="product-remove">
@@ -56,6 +57,10 @@
             <div class="no-items-found">
                 <p>There are no products in the favorites</p>
                 <a href="{% url 'shop' %}">GO SHOPPING</a>
+            </div>
+            <hr>
+            <div class="ceramics-image">
+                <img src="{% static 'cart/pottery_objects.jpg' %}" alt="Pottery Objects">
             </div>
             {% endif %}
             <hr>

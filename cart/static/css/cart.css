@@ -112,3 +112,7 @@
     text-decoration: underline;
     font-weight: bold;
 }
+
+.ceramics-image img {
+    width: 100%;
+}

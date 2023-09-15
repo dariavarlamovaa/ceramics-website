@@ -31,11 +31,10 @@
 .item-edit-form input[type="text"],
 .item-edit-form input[type="password"],
 .item-edit-form input[type="file"],
-.item-edit-form input[type="url"],
 .item-add-form input[type="text"],
 .item-add-form input[type="password"],
 .item-add-form input[type="file"],
-.item-add-form input[type="url"] {
+.item-edit-form input[type='date']{
     width: 100%;
     border: 2px solid #211f1f;
     box-sizing: border-box;

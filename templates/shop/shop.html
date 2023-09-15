@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static %}
+{% load tz %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/shop.css' %}">
 {% endblock %}
@@ -17,12 +18,14 @@
                 </div>
                 <div class="query-set">
                     <span>Category</span>
-                    {% for type in types %}
-                    <a class="sort-by-link" href="?category={{ type }}">{{ type }}</a>
+                    {% for category in categories %}
+                    <a class="sort-by-link" href="?category={{ category }}">{{ category }}</a>
                     {% endfor %}
                 </div>
+                <div class="query-set">
+                    <a class="sales-items-link" href="?discount_items">Sales</a>
+                </div>
             </div>
-            <hr>
             <div class="catalog-items">
                 {% for item in items %}
                 {% if user.is_active %}
@@ -32,7 +35,11 @@
                     <div class="item-info">
                         <a href="{% url 'edit-item' item.id %}">
                             <span>{{ item.title }}</span>
+                            {% if item.discount_price and item.start_date <= now and now <= item.end_date %}
+                            <span class="span-price">{{ item.discount_price }}</span>
+                            {% else %}
                             <span class="span-price">{{ item.price }}</span>
+                            {% endif %}
                         </a>
                     </div>
                     <div class="item-links">
@@ -69,7 +76,11 @@
                     <div class="item-info">
                         <a href="{% url 'view-item' item.id%}">
                             <span>{{ item.title }}</span>
+                            {% if item.discount_price and item.start_date <= now and now <= item.end_date %}
+                            <span class="span-price">{{ item.discount_price }}</span>
+                            {% else %}
                             <span class="span-price">{{ item.price }}</span>
+                            {% endif %}
                         </a>
                     </div>
                     <div class="item-links">
@@ -108,7 +119,11 @@
                     <div class="item-info">
                         <a href="{% url 'view-item' item.id%}">
                             <span>{{ item.title }}</span>
-                            <span>{{ item.price }}</span>
+                            {% if item.discount_price and item.start_date <= now and now <= item.end_date %}
+                            <span class="span-price">{{ item.discount_price }}</span>
+                            {% else %}
+                            <span class="span-price">{{ item.price }}</span>
+                            {% endif %}
                         </a>
                     </div>
                     <div class="item-links">

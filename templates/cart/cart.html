@@ -25,10 +25,13 @@
                     {% if cart_items %}
                     {% for item in cart_items %}
                     <tr class="table-row-titles">
-                        <td class="product-thumbnail"><a href="#"><img src="{{ item.image.url }}" alt="{{ item.title }}"
-                                                                       class="item-image"></a></td>
-                        <td class="product-name"><a href="#">{{ item.title }}</a></td>
-                        <td class="product-price"><a href="#">{{ item.price }}</a></td>
+                        <td class="product-thumbnail"><a href="{% url 'view-item' item.main_item.id %}"><img
+                                src="{{ item.image.url }}" alt="{{ item.title }}"
+                                class="item-image"></a></td>
+                        <td class="product-name"><a href="{% url 'view-item' item.main_item.id %}">{{ item.title }}</a>
+                        </td>
+                        <td class="product-price"><a href="{% url 'view-item' item.main_item.id %}">{{ item.price }}</a>
+                        </td>
                         <td class="product-quantity"><a href="#">
                             <form method="POST" action="{% url 'update-cart' %}" class="update-quantity-form">
                                 {% csrf_token %}
@@ -73,7 +76,12 @@
                 <a href="{% url 'shop' %}">GO SHOPPING</a>
             </div>
             <hr>
+            <div class="ceramics-image">
+                <img src="{% static 'cart/pottery_objects.jpg' %}" alt="Pottery Objects">
+            </div>
             {% endif %}
+            <hr>
+
         </div>
     </section>
 </main>

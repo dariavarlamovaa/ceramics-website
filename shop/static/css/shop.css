@@ -1,17 +1,20 @@
 .query-set-sort {
-    display: flex;
-    justify-content: space-evenly;
+    position: absolute;
+    left: -200px;
 }
 
 .query-set {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 50px;
+    min-height: 150px;
 }
 
-.query-set span {
-    font-weight: bold;
+.query-set span,
+.sales-items-link {
+    font-size: 25px;
 }
 
 .catalog-items {
@@ -40,7 +43,6 @@
     margin: 0 auto;
     padding-bottom: 20px;
 }
-
 
 
 .add-to-cart-link {

@@ -6,7 +6,7 @@ from shop.models import Item
 class Comparison(models.Model):
     title = models.CharField(max_length=50)
     price = models.CharField(max_length=5)
-    type = models.CharField(max_length=100, default='another')
+    category = models.CharField(max_length=100, default='another')
     length = models.IntegerField()
     height = models.IntegerField()
     weight = models.IntegerField()

@@ -32,7 +32,7 @@
                         <th class="product-thumbnail"><img src="{{ item.image.url }}" alt="{{ item.title }}"></th>
                         <td class="product-name">{{ item.title }}</td>
                         <td class="product-price">{{ item.price }}</td>
-                        <td class="product-type">{{ item.type }}</td>
+                        <td class="product-type">{{ item.category }}</td>
                         <td class="product-length">{{ item.length }}</td>
                         <td class="product-thumbnail">{{ item.height }}</td>
                         <td class="product-thumbnail">{{ item.weight }}</td>
@@ -65,7 +65,12 @@
                 <a href="{% url 'shop' %}">GO SHOPPING</a>
             </div>
             <hr>
+            <div class="ceramics-image">
+                <img src="{% static 'cart/pottery_objects.jpg' %}" alt="Pottery Objects">
+            </div>
             {% endif %}
+            <hr>
+
         </div>
     </section>
 </main>

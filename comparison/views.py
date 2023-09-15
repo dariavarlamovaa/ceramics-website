@@ -14,24 +14,23 @@ def all_items_for_comparison(request):
 @login_required
 def add_item_to_comparison(request, pk):
     item = get_object_or_404(Item, pk=pk)
-    comparison_count = Comparison.objects.filter(user=request.user).count()
-    max_comparison_count = 3
-    if comparison_count < max_comparison_count:
-        comparison, created = Comparison.objects.get_or_create(
-            main_item=item,
-            title=item.title,
-            price=item.price,
-            type=item.type,
-            length=item.length,
-            height=item.height,
-            weight=item.weight,
-            material=item.material,
-            color=item.color,
-            image=item.image,
-            user=request.user
-        )
-        if not created:
-            comparison.save()
+
+    comparison, created = Comparison.objects.get_or_create(
+        main_item=item,
+        title=item.title,
+        price=item.price,
+        category=item.category,
+        length=item.length,
+        height=item.height,
+        weight=item.weight,
+        material=item.material,
+        color=item.color,
+        image=item.image,
+        user=request.user
+    )
+    if not created:
+        comparison.save()
+
     return redirect('shop')
 
 

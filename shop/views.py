@@ -1,8 +1,11 @@
+import datetime
+
 from django.shortcuts import render, get_object_or_404, redirect
 from home.views import Menu
 from shop.models import Item
 from .forms import ItemForm
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 
 def shop(request):
@@ -10,17 +13,20 @@ def shop(request):
     items = Item.objects.all()
     sort_by = request.GET.get('sort_by')
     category = request.GET.get('category')
-    types = Item.objects.values_list('type', flat=True).distinct()
+    categories = Item.objects.values_list('category', flat=True).distinct()
+    now = timezone.now()
     if sort_by:
         items = Item.objects.order_by(sort_by).all()
-        context = {'items': items, 'menu': menu, 'types': types}
+        context = {'items': items, 'menu': menu, 'categories': categories, 'now': now}
         return render(request, 'shop/shop.html', context)
     if category:
-        items = Item.objects.filter(type=category).all()
-        context = {'items': items, 'menu': menu, 'types': types}
+        items = Item.objects.filter(category=category).all()
+        context = {'items': items, 'menu': menu, 'categories': categories, 'now': now}
         return render(request, 'shop/shop.html', context)
+    if 'discount_items' in request.GET:
+        items = Item.objects.filter(discount_price__isnull=False, start_date__lte=now, end_date__gte=now)
 
-    return render(request, 'shop/shop.html', {'menu': menu, 'items': items, 'types': types})
+    return render(request, 'shop/shop.html', {'menu': menu, 'items': items, 'categories': categories, 'now': now})
 
 
 @login_required
