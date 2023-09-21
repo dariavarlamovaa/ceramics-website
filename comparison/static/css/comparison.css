@@ -9,20 +9,47 @@
 .comparison-table {
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+
+.items-body-table {
+    display: flex;
+    align-items: stretch;
+    width: 80%;
+
+}
+
+.comparison-table tr {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+
+.comparison-table th, .comparison-table td {
+    flex-basis: 100%;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.titles-row {
+    width: 20%;
+    border-right: 1px solid black;
+    box-sizing: border-box;
 }
 
 .product-thumbnail {
     width: 150px;
+    height: 100px;
     box-sizing: border-box;
 }
 
 .product-thumbnail img {
     width: 100px;
     height: 100px;
-}
-
-.product-remove {
-    text-align: right;
 }
 
 .no-comparison-found {

@@ -18,15 +18,15 @@
                         <th class="product-name">Title</th>
                         <th class="product-price">Price</th>
                         <th class="product-type">Type</th>
-                        <th class="product-length">Length</th>
-                        <th class="product-height">Height</th>
-                        <th class="product-weight">Weight</th>
+                        <th class="product-length">Length, mm</th>
+                        <th class="product-height">Height, mm</th>
+                        <th class="product-weight">Weight, mm</th>
                         <th class="product-material">Material</th>
                         <th class="product-color">Color</th>
                         <th class="product-remove">&nbsp;</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="items-body-table">
                     {% for item in compared_items %}
                     <tr>
                         <th class="product-thumbnail"><img src="{{ item.image.url }}" alt="{{ item.title }}"></th>
@@ -34,10 +34,10 @@
                         <td class="product-price">{{ item.price }}</td>
                         <td class="product-type">{{ item.category }}</td>
                         <td class="product-length">{{ item.length }}</td>
-                        <td class="product-thumbnail">{{ item.height }}</td>
-                        <td class="product-thumbnail">{{ item.weight }}</td>
-                        <td class="product-thumbnail">{{ item.material }}</td>
-                        <td class="product-thumbnail">{{ item.color }}</td>
+                        <td class="product-height">{{ item.height }}</td>
+                        <td class="product-weight">{{ item.weight }}</td>
+                        <td class="product-material">{{ item.material }}</td>
+                        <td class="product-color">{{ item.color }}</td>
                         <td class="product-remove">&nbsp;
                             <a href="{% url 'delete-compare-item' item.pk %}">
                                 <svg width="25px" height="25px" viewBox="0 0 1024 1024" fill="#000000" class="icon"
